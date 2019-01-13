@@ -21,7 +21,7 @@ Copy the Xyce_Regression tarball `Xyce_Regression-6.10.tar.gz` to this directory
 ````
 cat Xyce_Regression-6.10.tar.gz | docker run -i --mount source=regVol,target=/opt/Xyce/Test ubuntu bash -c "cd /opt/Xyce/Test && tar xvfz -"
 
-docker run -it --mount source=regResultVol,target=/tmp/regResult --mount source=regVol,target=/opt/Xyce/Test xyce_regression bash -c 'cd /tmp && /opt/Xyce/Test/Xyce_Regression-6.10/TestScripts/run_xyce_regression --output=/tmp/regResult/Xyce_Test --xyce_test=/opt/Xyce/Test/Xyce_Regression-6.10 --resultfile=/tmp/regResult/serial_results --taglist="+serial+nightly?noverbose-verbose?klu?fft" /usr/local/bin/Xyce'
+docker run -it --mount source=regResultVol,target=/tmp/regResult --mount source=regVol,target=/opt/Xyce/Test xyce_regression bash -c 'cd /tmp && /opt/Xyce/Test/Xyce_Regression-6.10/TestScripts/run_xyce_regression --output=/tmp/regResult/Xyce_Test --xyce_test=/opt/Xyce/Test/Xyce_Regression-6.10 --resultfile=/tmp/regResult/serial_results --taglist="+serial+nightly?noverbose-verbose?klu?fft-library" /usr/local/bin/Xyce'
 ````
 
 # Run a simple test and extract from volume.
