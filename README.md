@@ -10,12 +10,12 @@ The result of this build has been uploaded to docker hub. You can bypass this st
 
 # Run Xyce Regression
 
-Copy the Xyce_Regression tarball to this directory
-Build a new image layer because we need python and numpy.
+Build a new image layer because we need python, numpy and scipy.
 
 ````
 docker build -t xyce_regression -f Dockerfile.regression .
 ````
+
 Copy the Xyce_Regression tarball `Xyce_Regression-6.10.tar.gz` to this directory.
 
 ````
