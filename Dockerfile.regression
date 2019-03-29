@@ -1,4 +1,4 @@
-FROM xyce as xyce_regression
+FROM stevenmburns/xyce as xyce_regression
 
 RUN apt-get update && apt-get install -yq python-pip && apt-get clean
 
