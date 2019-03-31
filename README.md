@@ -1,7 +1,7 @@
 
 # Build Xyce
 
-Copy the Xyce source tarball `Xyce-6.10.tar.gz` to this directory.
+Copy the Xyce source tarball `Xyce-6.10.tar.gz` to this directory. (You can get this from https://xyce.sandia.gov/ after filling out a short form.)
 
 ````
 docker build -t stevenmburns/xyce .
@@ -16,7 +16,7 @@ Build a new image layer because we need python, numpy and scipy.
 docker build -t xyce_regression -f Dockerfile.regression .
 ````
 
-Copy the Xyce_Regression tarball `Xyce_Regression-6.10.tar.gz` to this directory.
+Copy the Xyce_Regression tarball `Xyce_Regression-6.10.tar.gz` to this directory. (Get this from https://xyce.sandia.gov/)
 
 ````
 cat Xyce_Regression-6.10.tar.gz | docker run -i --mount source=regVol,target=/opt/Xyce/Test ubuntu bash -c "cd /opt/Xyce/Test && tar xvfz -"
