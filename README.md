@@ -1,7 +1,7 @@
 
 # Build Xyce
 
-Copy the Xyce source tarball to this directory.
+Copy the Xyce source tarball `Xyce-6.10.tar.gz` to this directory.
 
 ````
 docker build -t stevenmburns/xyce .
