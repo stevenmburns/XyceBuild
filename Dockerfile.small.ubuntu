@@ -1,0 +1,6 @@
+FROM ubuntu:18.04 as xyce_small_ubuntu
+
+COPY X.tar /
+
+RUN \
+  tar xvf X.tar && rm X.tar
