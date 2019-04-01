@@ -1,0 +1,11 @@
+*~
+*.cir
+*.cir.prn
+*.cir.res
+foo.gp
+Users_Guide.pdf
+X.tar
+Xyce-6.10.tar.gz
+Xyce_Regression-6.10.tar.gz
+Xyce-6.10/
+Xyce_Regression-6.10/
