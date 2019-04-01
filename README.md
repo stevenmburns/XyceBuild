@@ -34,25 +34,20 @@ docker run --mount source=regVol,target=/opt/Xyce/Test ubuntu bash -c 'cd /opt/X
 
 # Build a small image by extracting executable and shared libraries from original build
 
-The `stevenmburns/xyce` is 2.65GB. We can reduce its size by 190MB by copying the minimum that is needed out of the larger image.
+The `stevenmburns/xyce` is 2.65GB. We can reduce its size by 137MB by copying the minimum that is needed out of the larger image.
 Here is one way to do this:
 ```bash
-tar cvf - FILES_TO_COPY | docker run --mount source=tV,target=/V -i ubuntu bash -c "cd /V && tar xvf -"
-docker run --mount source=tV,target=/V stevenmburns/xyce bash -c 'tar cvfh - $(cat /V/FILES_TO_COPY)' > X.tar
 docker build -f Dockerfile.small.ubuntu -t stevenmburns/xyce_small_ubuntu .
 ```
 
-The executable runs when we copy these files:
+Here is the docker file.
 ```
-/usr/local/bin/Xyce
-/usr/lib/x86_64-linux-gnu/libfftw3.so.3
-/usr/lib/x86_64-linux-gnu/libamd.so.2
-/usr/lib/x86_64-linux-gnu/liblapack.so.3
-/usr/lib/x86_64-linux-gnu/libblas.so.3
-/usr/lib/x86_64-linux-gnu/libstdc++.so.6
-/usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so.5
-/usr/lib/x86_64-linux-gnu/libgfortran.so.4
-/usr/lib/x86_64-linux-gnu/libquadmath.so.0
+FROM stevenmburns/xyce as xyce
+
+FROM ubuntu as xyce_small_ubuntu_alt
+
+COPY --from=xyce /usr/local/bin/Xyce /usr/local/bin/
+COPY --from=xyce /usr/lib/x86_64-linux-gnu/libfftw3.so.3 /usr/lib/x86_64-linux-gnu/libamd.so.2 /usr/lib/x86_64-linux-gnu/liblapack.so.3 /usr/lib/x86_64-linux-gnu/libblas.so.3 /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so.5 /usr/lib/x86_64-linux-gnu/libgfortran.so.4 /usr/lib/x86_64-linux-gnu/libquadmath.so.0 /usr/lib/x86_64-linux-gnu/
 ```
 
 This will generate the help message:
