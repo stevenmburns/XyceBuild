@@ -1,9 +1,0 @@
-/usr/local/bin/Xyce
-/usr/lib/x86_64-linux-gnu/libfftw3.so.3
-/usr/lib/x86_64-linux-gnu/libamd.so.2
-/usr/lib/x86_64-linux-gnu/liblapack.so.3
-/usr/lib/x86_64-linux-gnu/libblas.so.3
-/usr/lib/x86_64-linux-gnu/libstdc++.so.6
-/usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so.5
-/usr/lib/x86_64-linux-gnu/libgfortran.so.4
-/usr/lib/x86_64-linux-gnu/libquadmath.so.0
