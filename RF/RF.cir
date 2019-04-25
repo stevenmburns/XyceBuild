@@ -1,0 +1,90 @@
+* RF
+.inc cmosedu_models.txt
+.model NMOS NMOS
+.model PMOS PMOS
+
+
+
+
+*
+* Poly width = 50nm
+* TCN width = 50 nm
+* all space = 50nm
+*     |P| |T| |P|
+* 
+* Perimeter is 2*150nm
+* Area is 150nm * Width/2 (if device is folded or a series path [half allocated to each source and drain)
+*
+
+.subckt bitcell data select x y vcc width=100n
+.param length=50n
+.param perimeter={3*length}
+.param area={1.5*length*width}
+M1 y  x      0    0   n_50n L={length} W={width} PD={perimeter} AD={area}
+M2 x  y      0    0   n_50n L={length} W={width} PD={perimeter} AD={area}
+M3 y  x      vcc  vcc p_50n L={length} W={width} PD={perimeter} AD={area}
+M4 x  y      vcc  vcc p_50n L={length} W={width} PD={perimeter} AD={area}
+M5 x  select data 0   n_50n L={length} W={width} PD={perimeter} AD={area} PS={perimeter} AS={area}
+M6 y  select n0   0   n_50n L={length} W={width} PD={perimeter} AD={area} PS={perimeter} AS={area}
+M7 n0 data   0    0   n_50n L={length} W={width} PD={perimeter} AD={area}
+.ic V(x)=0 V(y)={vcc_value}
+.ends
+
+.subckt inv inp out vcc width=1000n
+.param length=50n
+.param perimeter={3*length}
+.param area={1.5*length*width}
+M1 out inp 0   0   n_50n L={length} W={width} PD={perimeter} AD={area}
+M2 out inp vcc vcc p_50n L={length} W={width} PD={perimeter} AD={area}
+.ends
+
+.param vcc_value=1
+.param slew=100ps
+.param period=500ps
+.param data_on={2*period-slew}
+.param select_on={period-slew}
+.param offset={select_on*0.5}
+
+V1 vcc 0 {vcc_value}
+V2 dataB   0 PULSE({vcc_value} 0 0ps      {slew} {slew} {data_on}   {period*4})
+V3 selectB 0 PULSE({vcc_value} 0 {offset} {slew} {slew} {select_on} {period*2})
+
+XdataDriver   dataB   data   vcc inv width=400n
+XselectDriver selectB select vcc inv width=100n
+
+X0 data select x y vcc bitcell
+X1 data 0 x1 y1 vcc bitcell
+X2 data 0 x2 y2 vcc bitcell
+X3 data 0 x3 y3 vcc bitcell
+X4 data 0 x4 y4 vcc bitcell
+X5 data 0 x5 y5 vcc bitcell
+X6 data 0 x6 y6 vcc bitcell
+X7 data 0 x7 y7 vcc bitcell
+X8 data 0 x8 y8 vcc bitcell
+X9 data 0 x9 y9 vcc bitcell
+Xa data 0 xa ya vcc bitcell
+Xb data 0 xb yb vcc bitcell
+Xc data 0 xc yc vcc bitcell
+Xd data 0 xd yd vcc bitcell
+Xe data 0 xe ye vcc bitcell
+Xf data 0 xf yf vcc bitcell
+
+X1r 0 select x1r y1r vcc bitcell
+X2r 0 select x2r y2r vcc bitcell
+X3r 0 select x3r y3r vcc bitcell
+X4r 0 select x4r y4r vcc bitcell
+X5r 0 select x5r y5r vcc bitcell
+X6r 0 select x6r y6r vcc bitcell
+X7r 0 select x7r y7r vcc bitcell
+X8r 0 select x8r y8r vcc bitcell
+X9r 0 select x9r y9r vcc bitcell
+Xar 0 select xar yar vcc bitcell
+Xbr 0 select xbr ybr vcc bitcell
+Xcr 0 select xcr ycr vcc bitcell
+Xdr 0 select xdr ydr vcc bitcell
+Xer 0 select xer yer vcc bitcell
+Xfr 0 select xfr yfr vcc bitcell
+
+.tran 0 3n 0 10p 
+.print tran V(x) V(y) V(select) V(data) V(selectB) V(dataB)
+.end
