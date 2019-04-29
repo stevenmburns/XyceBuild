@@ -3,9 +3,6 @@
 .model NMOS NMOS
 .model PMOS PMOS
 
-
-
-
 *
 * Poly width = 50nm
 * TCN width = 50 nm
