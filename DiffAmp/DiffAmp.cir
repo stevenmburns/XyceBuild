@@ -1,0 +1,78 @@
+* Differential Amplifier
+.inc cmosedu_models.txt
+.MODEL NMOS NMOS
+.MODEL PMOS PMOS
+
+*** BEGIN SUBCIRCUIT: DiffAmp
+*
+* Poly width = 50nm
+* TCN width = 50 nm
+* all space = 50nm
+*     |P| |T| |P|
+*
+* Perimeter is 2*150nm
+* Area is 150nm * Width/2 (if device is folded or a series path [half allocated to each source and drain)
+*
+.SUBCKT DiffAmp inplus inminus outplus outminus vcc
+.param width=5u
+.param length=50n
+.param perimeter={3*length}
+.param area={1.5*length*width}
+
+R1 vcc outplus 1e4
+R2 vcc outminus 1e4
+
+M1 outplus inplus src 0 n_50n   L={length} W={width} PD={perimeter} AD={area}
+M2 outminus inminus src 0 n_50n L={length} W={width} PD={perimeter} AD={area}
+
+I0 src 0 100e-6
+
+.ENDS
+*** END SUBCIRCUIT: DiffAmp
+
+** BEGIN TESTBENCH
+
+* 10 Mhz
+.PARAM fsin = 10000000
+* 1 V
+.PARAM vcc_val = 1
+
+C1 outplus 0 1e-12
+C2 outminus 0 1e-12
+
+V1 vcc 0 {vcc_val}
+* V2 inplus  1 0 SIN({vcc_val/2} {vcc_val/10} {fsin} 0 0 0)
+* V3 inminus 1 0 SIN({vcc_val/2} {vcc_val/10} {fsin} 0 0 180)
+V2 inplus  0 DC {vcc_val/2} AC {vcc_val/10} 0   SIN({vcc_val/2} {vcc_val/10} {fsin} 0 0 0)
+V3 inminus 0 DC {vcc_val/2} AC {vcc_val/10} 180 SIN({vcc_val/2} {vcc_val/10} {fsin} 0 0 180)
+
+X0 inplus inminus outplus outminus vcc DiffAmp
+
+** END TESTBENCH
+
+** Begin DC
+.DC V1 1 1 0.1
+.PRINT DC V(inplus) V(inminus) V(outplus) V(outminus) V(X0:src) V(vcc) V(0)
+** End DC
+
+** BEGIN AC
+.AC DEC 100 1K 100MEG
+.PRINT AC FORMAT=GNUPLOT { VDB(outplus, outminus) - VDB(inplus, inminus) } { (VP(outplus, outminus) - VP(inplus, inminus)) / 3.14 * 180 }  V(inplus) V(inminus) V(outplus) V(outminus) V(X0:src) V(vcc) V(0) X0:M1:L X0:M2:L X0:R1:R X0:R2:R
+** END AC
+
+** BEGIN TRAN
+* .TRAN 0 5e-7 2e-7
+* .PRINT TRAN FILE=DiffAmp.cir.prn V(inplus, inminus) V(outplus, outminus) X0:M1:L X0:M2:L X0:R1:R X0:R2:R
+** END TRAN
+
+** BEGIN STEP
+.STEP X0:M1:L 50n 55n 5n
+.STEP X0:M2:L 50n 55n 5n
+.STEP X0:R1:R 0.9e4 1.1e4 0.1e4
+.STEP X0:R2:R 0.9e4 1.1e4 0.1e4
+** END STEP
+
+** Print operating point info before existing
+.OP
+
+.END
