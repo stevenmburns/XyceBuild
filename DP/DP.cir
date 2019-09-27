@@ -1,0 +1,35 @@
+* Differential Pair
+.inc cmosedu_models.txt
+.model NMOS NMOS
+.model PMOS PMOS
+
+.param spacing=50n
+.param length=50n
+.param width=100n
+.param perimeter={3*spacing}
+.param area={1.5*spacing*width}
+
+Ma outa ina mirror 0 n_50n L={length} W={width} PD={perimeter} AD={area}
+Mb outb inb mirror 0 n_50n L={length} W={width} PD={perimeter} AD={area}
+
+Mc mirror mg 0 0 n_50n L={length} W={width} PD={perimeter} AD={area}
+
+Md mg mg 0 0  n_50n L={length} W={width} PD={perimeter} AD={area}
+
+Rcurrent vcc mg 10k
+
+Ra outa vcc 50k
+Rb outb vcc 50k
+
+.param vcc_value=1.0
+
+V1 vcc 0 {vcc_value}
+Ea ina 0 vcc 0 0.6
+Eb inb 0 vcc 0 0.6
+
+.dc v1 0 1 0.01
+.step Ma:L 45n 55n 1n
+
+.print dc format=gnuplot V(ina) V(inb) V(outa) V(outb) I(Rcurrent) V(mirror) Id(Mc)
+
+.end

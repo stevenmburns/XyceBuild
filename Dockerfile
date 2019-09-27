@@ -1,6 +1,6 @@
 FROM ubuntu:18.04 as xyce_deps
 
-RUN apt-get update && apt-get install -yq gcc g++ gfortran make cmake bison flex libfl-dev libfftw3-dev libsuitesparse-dev libblas-dev liblapack-dev libtool && apt-get clean
+RUN apt-get update && apt-get install -yq gcc g++ gfortran make cmake bison flex libfl-dev libfftw3-dev libsuitesparse-dev libblas-dev liblapack-dev libtool automake autoconf && apt-get clean
 
 FROM xyce_deps as trillinos_git
 
@@ -28,13 +28,11 @@ RUN \
 
 FROM trillinos_build as xyce
 
-COPY Xyce-6.10.tar.gz /opt/Xyce/
-
 RUN \
     cd /opt/Xyce && \
-    tar xvfz Xyce-6.10.tar.gz && \
-    rm Xyce-6.10.tar.gz && \
-    cd Xyce-6.10 && \
+    git clone http://github.com/Xyce/Xyce.git --branch Release-6.11.1 Xyce-6.11.1 && \
+    cd Xyce-6.11.1 && \
+    ./bootstrap && \
     mkdir build && \
     cd build && \
     ../configure CXXFLAGS="-O3" ARCHDIR="/opt/Xyce/XyceLibs/Serial" CPPFLAGS="-I/usr/include/suitesparse" && \
@@ -42,4 +40,5 @@ RUN \
     make install && \
     cd .. && \
     rm -rf build && \
-    cd .. && rm -rf Xyce-6.10
+    cd .. && rm -rf Xyce-6.11.1
+
