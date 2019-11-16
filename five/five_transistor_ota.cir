@@ -2097,19 +2097,18 @@ r736 net_m0_m3_M2_X1_Y0_S net10_M1_2320_588 50
 r737 net_m0_m3_M2_X1_Y0_D vout_M1_2480_336 50
 r738 net_m0_m3_M2_X1_Y0_D vout_M1_2480_462 50
 r739 net_m0_m3_M2_X1_Y0_D vout_M1_2480_588 50
-m1_M1_X0_Y0_0 net_m1_M1_X0_Y0_D net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_diff vdd! PMOS width=2.7e-07 length=2e-08 nfin=12
-m1_M1_X0_Y0_1 net_m1_M1_X0_Y0_diff net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_S vdd! PMOS width=2.7e-07 length=2e-08 nfin=12
-m2_M1_X0_Y0_0 net_m2_M1_X0_Y0_D net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_diff vdd! PMOS width=2.7e-07 length=2e-08 nfin=12
-m2_M1_X0_Y0_1 net_m2_M1_X0_Y0_diff net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_S vdd! PMOS width=2.7e-07 length=2e-08 nfin=12
-m5_m4_M1_X0_Y0_0 net_m5_m4_M1_X0_Y0_D net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_diff gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m5_m4_M1_X0_Y0_1 net_m5_m4_M1_X0_Y0_diff net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_S gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m5_m4_M2_X1_Y0_0 net_m5_m4_M2_X1_Y0_D net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_diff gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m5_m4_M2_X1_Y0_1 net_m5_m4_M2_X1_Y0_diff net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_S gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m0_m3_M1_X0_Y0_0 net_m0_m3_M1_X0_Y0_D net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_diff gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m0_m3_M1_X0_Y0_1 net_m0_m3_M1_X0_Y0_diff net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_S gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m0_m3_M2_X1_Y0_0 net_m0_m3_M2_X1_Y0_D net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_diff gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-m0_m3_M2_X1_Y0_1 net_m0_m3_M2_X1_Y0_diff net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_S gnd! NMOS width=2.7e-07 length=2e-08 nfin=12
-
+x_m1_M1_X0_Y0_0 net_m1_M1_X0_Y0_D net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_diff vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m1_M1_X0_Y0_1 net_m1_M1_X0_Y0_diff net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_S vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m2_M1_X0_Y0_0 net_m2_M1_X0_Y0_D net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_diff vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m2_M1_X0_Y0_1 net_m2_M1_X0_Y0_diff net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_S vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M1_X0_Y0_0 net_m5_m4_M1_X0_Y0_D net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M1_X0_Y0_1 net_m5_m4_M1_X0_Y0_diff net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M2_X1_Y0_0 net_m5_m4_M2_X1_Y0_D net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M2_X1_Y0_1 net_m5_m4_M2_X1_Y0_diff net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M1_X0_Y0_0 net_m0_m3_M1_X0_Y0_D net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M1_X0_Y0_1 net_m0_m3_M1_X0_Y0_diff net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M2_X1_Y0_0 net_m0_m3_M2_X1_Y0_D net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M2_X1_Y0_1 net_m0_m3_M2_X1_Y0_diff net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
 
 **testbench
 v2 vinp_M5_1440_0 0 DC 675e-3 AC 500e-3 180
