@@ -1,4 +1,3 @@
-
 *
 * Short channel models from CMOS Circuit Design, Layout, and Simulation,
 * 50nm BSIM4 models VDD=1V, see CMOSedu.com
@@ -131,8 +130,8 @@
 
 *.OPTION INGOLD=2 ARTIST=2 PSF=2 MEASOUT=1 PARHIER=LOCAL PROBE=0 MARCH=2 ACCURACY=1 POST
 
-.SUBCKT nmos_rvt d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*100n}
+.SUBCKT nmos_rvt d g s b PARAMS: w=270e-9 l=20e-9 nfin=12
+.param width={nfin*400n}
 .param length={50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
@@ -140,8 +139,8 @@
 mn d g s b N_50n L={length} W={width} PD={perimeter} AD={area}
 .ENDS
 
-.SUBCKT pmos_rvt d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*100n}
+.SUBCKT pmos_rvt d g s b PARAMS: w=270e-9 l=20e-9 nfin=12
+.param width={nfin*400n}
 .param length={2*50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
@@ -149,39 +148,31 @@ mn d g s b N_50n L={length} W={width} PD={perimeter} AD={area}
 mp d g s b P_50n L={length} W={width} PD={perimeter} AD={area}
 .ENDS
 
-x5 net2 net2 net5s 0 nmos_rvt w=270e-9 l=20e-9 nfin=10
-x5s net5s net2 0 0 nmos_rvt w=270e-9 l=20e-9 nfin=10
-x4 net10 net2 net4s 0 nmos_rvt w=270e-9 l=20e-9 nfin=40
-x4s net4s net2 0 0 nmos_rvt w=270e-9 l=20e-9 nfin=40
-x3 vout net15 net3s 0 nmos_rvt w=270e-9 l=20e-9 nfin=160
-x3s net3s net15 net10 0 nmos_rvt w=270e-9 l=20e-9 nfin=160
-x0 net8 net17 net0s 0 nmos_rvt w=270e-9 l=20e-9 nfin=160
-x0s net0s net17 net10 0 nmos_rvt w=270e-9 l=20e-9 nfin=160
-x2 vout net8 net2s vdd! pmos_rvt w=270e-9 l=20e-9 nfin=100
-x2s net2s net8 vdd! vdd! pmos_rvt w=270e-9 l=20e-9 nfin=100
-x1 net8 net8 net1s vdd! pmos_rvt w=270e-9 l=20e-9 nfin=100
-x1s net1s net8 vdd! vdd! pmos_rvt w=270e-9 l=20e-9 nfin=100
+xm5 id id 0 0 nmos_rvt w=270e-9 l=20e-9 nfin=6
+xm4 net10 id 0 0 nmos_rvt w=270e-9 l=20e-9 nfin=6
+xm3 vout vinn net10 0 nmos_rvt w=270e-9 l=20e-9 nfin=6
+xm0 net8 vinp net10 0 nmos_rvt w=270e-9 l=20e-9 nfin=6
+xm2 vout net8 vdd! vdd! pmos_rvt w=270e-9 l=20e-9 nfin=6
+xm1 net8 net8 vdd! vdd! pmos_rvt w=270e-9 l=20e-9 nfin=6
 
 **testbench
-v2 net15 0 DC 675e-3 AC 500e-3 180
-v1 net17 0 DC 675e-3 AC 500e-3
+v2 vinp 0 DC 675e-3 AC 500e-3 180
+v1 vinn 0 DC 675e-3 AC 500e-3
 v0 vdd! 0 1000e-3
-i5 vdd! net2 40e-6
+i5 vdd! id 40e-6
 
-c1 vout 0 350e-15
 
-*.DC v2 0 1 0.1  v1 0 1 0.1
-*.DC v2 0 1 0.1
+cload vout 0 350e-15
+
+.OP
 
 .AC DEC 100 1.0 1e11
 
-*.PRINT DC v(vdd!) v(net15) v(net17) v(net2) v(net5s) v(net4s) v(net10) v(vout) v(net3s) v(net8)  v(net0s) v(net2s) v(net1s) id(x5/mn)
-
 .PRINT AC vdb(vout)
 
-*.meas ac GAIN find vdb(vout) at = 1       			$ Measure Open-loop Gain    (Gain) 	(dB)
+*.meas ac GAIN find vdb(vout) at = 1       			; Measure Open-loop Gain    (Gain) 	(dB)
 *.meas ac UGF when vdb(vout)=0
-*.meas ac threeDB when par('vdb(vout)+3')=gain				$ Measure Unity-gain Frequency 	(UGF) 	(Hz)
-*.meas ac PM find par('180+vp(vout)') when vdb(vout)=0		        $ Measure Phase margin	(PM) 	(deg)
+*.meas ac threeDB when par('vdb(vout)+3')=gain				; Measure Unity-gain Frequency 	(UGF) 	(Hz)
+*.meas ac PM find par('180+vp(vout)') when vdb(vout)=0		        ; Measure Phase margin	(PM) 	(deg)
 
 .END
