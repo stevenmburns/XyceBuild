@@ -168,7 +168,7 @@ cload vout 0 350e-15
 
 .AC DEC 100 1.0 1e11
 
-.PRINT AC vdb(vout)
+.PRINT AC FORMAT=GNUPLOT VDB(vout) { VP(vout) / 3.14 * 180 }
 
 *.meas ac GAIN find vdb(vout) at = 1       			; Measure Open-loop Gain    (Gain) 	(dB)
 *.meas ac UGF when vdb(vout)=0

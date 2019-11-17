@@ -2131,6 +2131,6 @@ cload vout 0 350e-15
 
 .AC DEC 100 1.0 1e11
 
-.PRINT AC vdb(vout)
+.PRINT AC FORMAT=GNUPLOT VDB(vout) { VP(vout) / 3.14 * 180 }
 
 .END
