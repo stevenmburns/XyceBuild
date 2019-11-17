@@ -1,4 +1,3 @@
-
 *
 * Short channel models from CMOS Circuit Design, Layout, and Simulation,
 * 50nm BSIM4 models VDD=1V, see CMOSedu.com
@@ -132,16 +131,7 @@
 *.OPTION INGOLD=2 ARTIST=2 PSF=2 MEASOUT=1 PARHIER=LOCAL PROBE=0 MARCH=2 ACCURACY=1 POST
 
 .SUBCKT NMOS d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*100n}
-.param length={50n}
-.param perimeter={3*length}
-.param area={1.5*length*width}
-
-mn d g s b N_50n L={length} W={width} PD={perimeter} AD={area}
-.ENDS
-
-.SUBCKT nmos_rvt d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*100n}
+.param width={nfin*400n}
 .param length={50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
@@ -150,7 +140,7 @@ mn d g s b N_50n L={length} W={width} PD={perimeter} AD={area}
 .ENDS
 
 .SUBCKT PMOS d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*100n}
+.param width={nfin*400n}
 .param length={2*50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
@@ -2107,33 +2097,42 @@ r737 net_m0_m3_M2_X1_Y0_D vout_M1_2480_336 50
 r738 net_m0_m3_M2_X1_Y0_D vout_M1_2480_462 50
 r739 net_m0_m3_M2_X1_Y0_D vout_M1_2480_588 50
 
-x1_M1_X0_Y0_0 net_m1_M1_X0_Y0_D net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_diff vdd! PMOS l=2e-08 nfin=12 w=2.7e-07
-x1_M1_X0_Y0_1 net_m1_M1_X0_Y0_diff net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_S vdd! PMOS l=2e-08 nfin=12 w=2.7e-07
-x2_M1_X0_Y0_0 net_m2_M1_X0_Y0_D net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_diff vdd! PMOS l=2e-08 nfin=12 w=2.7e-07
-x2_M1_X0_Y0_1 net_m2_M1_X0_Y0_diff net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_S vdd! PMOS l=2e-08 nfin=12 w=2.7e-07
-x5_m4_M1_X0_Y0_0 net_m5_m4_M1_X0_Y0_D net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_diff gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x5_m4_M1_X0_Y0_1 net_m5_m4_M1_X0_Y0_diff net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_S gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x5_m4_M2_X1_Y0_0 net_m5_m4_M2_X1_Y0_D net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_diff gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x5_m4_M2_X1_Y0_1 net_m5_m4_M2_X1_Y0_diff net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_S gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x0_m3_M1_X0_Y0_0 net_m0_m3_M1_X0_Y0_D net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_diff gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x0_m3_M1_X0_Y0_1 net_m0_m3_M1_X0_Y0_diff net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_S gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x0_m3_M2_X1_Y0_0 net_m0_m3_M2_X1_Y0_D net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_diff gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
-x0_m3_M2_X1_Y0_1 net_m0_m3_M2_X1_Y0_diff net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_S gnd! nmos_rvt l=2e-08 nfin=12 w=2.7e-07
+x_m1_M1_X0_Y0_0 net_m1_M1_X0_Y0_D net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_diff vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m1_M1_X0_Y0_1 net_m1_M1_X0_Y0_diff net_m1_M1_X0_Y0_G net_m1_M1_X0_Y0_S vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m2_M1_X0_Y0_0 net_m2_M1_X0_Y0_D net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_diff vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m2_M1_X0_Y0_1 net_m2_M1_X0_Y0_diff net_m2_M1_X0_Y0_G net_m2_M1_X0_Y0_S vdd! PMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M1_X0_Y0_0 net_m5_m4_M1_X0_Y0_D net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M1_X0_Y0_1 net_m5_m4_M1_X0_Y0_diff net_m5_m4_M1_X0_Y0_G net_m5_m4_M1_X0_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M2_X1_Y0_0 net_m5_m4_M2_X1_Y0_D net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m5_m4_M2_X1_Y0_1 net_m5_m4_M2_X1_Y0_diff net_m5_m4_M2_X1_Y0_G net_m5_m4_M2_X1_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M1_X0_Y0_0 net_m0_m3_M1_X0_Y0_D net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M1_X0_Y0_1 net_m0_m3_M1_X0_Y0_diff net_m0_m3_M1_X0_Y0_G net_m0_m3_M1_X0_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M2_X1_Y0_0 net_m0_m3_M2_X1_Y0_D net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_diff gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+x_m0_m3_M2_X1_Y0_1 net_m0_m3_M2_X1_Y0_diff net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
+
+**connections
+r_vdd_inject vdd! vdd_M4_3040_336 0.001
+r_id_inject id id_M3_640_252 0.001
+r_vinp_inject vinp vinp_M5_1440_0 0.001
+r_vinn_inject vinn vinn_M2_2400_504 0.001
+r_vout_probe vout_M4_2440_252 vout 0.001
+r_vss_inject 0 vss_M3_560_132 0.001
 
 **testbench
-v2 vinp_M5_1440_0 0 DC 675e-3 AC 500e-3 180
+v2 vinp 0 DC 675e-3 AC 500e-3 180
 v1 vinn_M2_2400_504 0 DC 675e-3 AC 500e-3
 v0 vdd! 0 1000e-3
-i5 vdd! id_M3_640_252 40e-6
+i5 vdd! id 40e-6
 
-cload vout_M4_2440_252 0 350e-15
+
+cload vout 0 350e-15
 
 .OP
 
-*.PRINT DC v(x0_m3_M2_X1_Y0_1:mn:g) v(x0_m3_M2_X1_Y0_1:mn:d) v(x0_m3_M2_X1_Y0_1:mn:s)
+*.PRINT DC v(vout) v(id) v(vinp) v(vinn)
 
 .AC DEC 100 1.0 1e11
 
-.PRINT AC vdb(vout_M4_2440_252)
+.PRINT AC vdb(vout)
 
 .END

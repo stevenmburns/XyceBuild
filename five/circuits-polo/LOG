@@ -3,7 +3,7 @@
 ***** Welcome to the Xyce(TM) Parallel Electronic Simulator
 *****
 ***** This is version Xyce Release 6.11.1-opensource
-***** Date: Sun Nov 17 02:09:58 UTC 2019
+***** Date: Sun Nov 17 18:10:23 UTC 2019
 
 
 ***** Executing netlist five_transistor_ota.cir
@@ -11,17 +11,18 @@
 ***** Reading and parsing netlist...
 ***** Setting up topology...
 
+Netlist warning: Voltage Node (VINN) connected to only 1 device Terminal
 Netlist warning: Voltage Node (GND!) does not have a DC path to ground
 ***** Device Count Summary ...
        C level 1 (Capacitor)                  1209
        I level 1 (Independent Current Source)    1
        M level 14 (BSIM4)                       12
-       R level 1 (Resistor)                    740
+       R level 1 (Resistor)                    746
        V level 1 (Independent Voltage Source)    3
        -------------------------------------------
-       Total Devices                          1965
+       Total Devices                          1971
 ***** Setting up matrix structure...
-***** Number of Unknowns = 763
+***** Number of Unknowns = 767
 ***** Initializing...
 
 ------------------------------------------------------------
@@ -838,8 +839,8 @@ Number of BSIM4 models: 2
           PBIGS              0              0
 
 Number of BSIM4 instances: 12
-          name X0_M3_M1_X0_Y0_0:MNX0_M3_M1_X0_Y0_1:MNX0_M3_M2_X1_Y0_0:MNX0_M3_M2_X1_Y0_1:MNX5_M4_M1_X0_Y0_0:MNX5_M4_M1_X0_Y0_1:MNX5_M4_M2_X1_Y0_0:MN
-X5_M4_M2_X1_Y0_1:MNX1_M1_X0_Y0_0:MPX1_M1_X0_Y0_1:MPX2_M1_X0_Y0_0:MPX2_M1_X0_Y0_1:MP
+          name X_M0_M3_M1_X0_Y0_0:MNX_M0_M3_M1_X0_Y0_1:MNX_M0_M3_M2_X1_Y0_0:MNX_M0_M3_M2_X1_Y0_1:MNX_M5_M4_M1_X0_Y0_0:MNX_M5_M4_M1_X0_Y0_1:MNX_M5_M4_M2_X1_Y0_0:MN
+X_M5_M4_M2_X1_Y0_1:MNX_M1_M1_X0_Y0_0:MPX_M1_M1_X0_Y0_1:MPX_M2_M1_X0_Y0_0:MPX_M2_M1_X0_Y0_1:MP
          model           N_50N          N_50N          N_50N          N_50N          N_50N          N_50N          N_50N
           N_50N          P_50N          P_50N          P_50N          P_50N
             OFF              0              0              0              0              0              0              0
@@ -852,8 +853,8 @@ X5_M4_M2_X1_Y0_1:MNX1_M1_X0_Y0_0:MPX1_M1_X0_Y0_1:MPX2_M1_X0_Y0_0:MPX2_M1_X0_Y0_1
               0              0              0              0              0
             SCA              0              0              0              0              0              0              0
               0              0              0              0              0
-             AD          9e-14          9e-14          9e-14          9e-14          9e-14          9e-14          9e-14
-          9e-14        1.8e-13        1.8e-13        1.8e-13        1.8e-13
+             AD        3.6e-13        3.6e-13        3.6e-13        3.6e-13        3.6e-13        3.6e-13        3.6e-13
+        3.6e-13        7.2e-13        7.2e-13        7.2e-13        7.2e-13
               L          5e-08          5e-08          5e-08          5e-08          5e-08          5e-08          5e-08
           5e-08          1e-07          1e-07          1e-07          1e-07
            RBPD             15             15             15             15             15             15             15
@@ -886,8 +887,8 @@ X5_M4_M2_X1_Y0_1:MNX1_M1_X0_Y0_0:MPX1_M1_X0_Y0_1:MPX2_M1_X0_Y0_0:MPX2_M1_X0_Y0_1
               0              0              0              0              0
            RBPS             15             15             15             15             15             15             15
              15             15             15             15             15
-              W        1.2e-06        1.2e-06        1.2e-06        1.2e-06        1.2e-06        1.2e-06        1.2e-06
-        1.2e-06        1.2e-06        1.2e-06        1.2e-06        1.2e-06
+              W        4.8e-06        4.8e-06        4.8e-06        4.8e-06        4.8e-06        4.8e-06        4.8e-06
+        4.8e-06        4.8e-06        4.8e-06        4.8e-06        4.8e-06
        RBODYMOD              1              1              1              1              1              1              1
               1              1              1              1              1
          DELVTO              0              0              0              0              0              0              0
@@ -3015,7 +3016,7 @@ Number of Resistor models: 1
 
             RSH              0
 
-Number of Resistor instances: 740
+Number of Resistor instances: 746
           name              R0             R1            R10           R100           R101           R102           R103
            R104           R105           R106           R107           R108           R109            R11           R110
            R111           R112           R113           R114           R115           R116           R117           R118
@@ -3108,7 +3109,8 @@ Number of Resistor instances: 740
            R739            R74            R75            R76            R77            R78            R79             R8
             R80            R81            R82            R83            R84            R85            R86            R87
             R88            R89             R9            R90            R91            R92            R93            R94
-            R95            R96            R97            R98            R99
+            R95            R96            R97            R98            R99    R_ID_INJECT   R_VDD_INJECT  R_VINN_INJECT
+  R_VINP_INJECT   R_VOUT_PROBE   R_VSS_INJECT
          model R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
@@ -3201,7 +3203,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
-R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
+R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
+R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
             TCE              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
@@ -3294,7 +3297,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
-              0              0              0              0              0
+              0              0              0              0              0              0              0              0
+              0              0              0
             TC2              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
@@ -3387,7 +3391,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
-              0              0              0              0              0
+              0              0              0              0              0              0              0              0
+              0              0              0
               M              1              1              1              1              1              1              1
               1              1              1              1              1              1              1              1
               1              1              1              1              1              1              1              1
@@ -3480,7 +3485,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               1              1              1              1              1              1              1              1
               1              1              1              1              1              1              1              1
               1              1              1              1              1              1              1              1
-              1              1              1              1              1
+              1              1              1              1              1              1              1              1
+              1              1              1
               L              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
@@ -3573,7 +3579,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
-              0              0              0              0              0
+              0              0              0              0              0              0              0              0
+              0              0              0
           DTEMP              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
@@ -3666,7 +3673,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
-              0              0              0              0              0
+              0              0              0              0              0              0              0              0
+              0              0              0
               W          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
           1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
           1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
@@ -3759,7 +3767,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
           1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
           1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
           1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
-          1e-05          1e-05          1e-05          1e-05          1e-05
+          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05          1e-05
+          1e-05          1e-05          1e-05
            TEMP             27             27             27             27             27             27             27
              27             27             27             27             27             27             27             27
              27             27             27             27             27             27             27             27
@@ -3852,7 +3861,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
              27             27             27             27             27             27             27             27
              27             27             27             27             27             27             27             27
              27             27             27             27             27             27             27             27
-             27             27             27             27             27
+             27             27             27             27             27             27             27             27
+             27             27             27
               R            3.6              8            5.2            0.4              8              8            4.4
             3.6              8            0.4              8              8              8            3.6            1.2
               8              8              8            4.8            3.6              8              8            0.8
@@ -3945,7 +3955,8 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
              50              8            1.2              8              8              8            4.8              8
             3.6              8              8            0.8              8            0.4            4.2              8
             4.6              8              8              8            4.4              8              4              8
-            0.4              8            4.6            4.2              8
+            0.4              8            4.6            4.2              8          0.001          0.001          0.001
+          0.001          0.001          0.001
             TC1              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
@@ -4038,26 +4049,27 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
               0              0              0              0              0              0              0              0
-              0              0              0              0              0
+              0              0              0              0              0              0              0              0
+              0              0              0
 
 ------------------------------------------------------------
 
 ***** Solution Summary *****
 	Number Successful Steps Taken:		1101
 	Number Failed Steps Attempted:		0
-	Number Jacobians Evaluated:		73
+	Number Jacobians Evaluated:		7
 	Number Iteration Matrix Factorizations:	0
-	Number Linear Solves:			73
+	Number Linear Solves:			7
 	Number Failed Linear Solves:		0
-	Number Residual Evaluations:		74
+	Number Residual Evaluations:		8
 	Number Nonlinear Convergence Failures:	0
-	Total Residual Load Time:		0.00937963 seconds
-	Total Jacobian Load Time:		0.00877857 seconds
-	Total Linear Solution Time:		0.0332949 seconds
+	Total Residual Load Time:		0.00107431 seconds
+	Total Jacobian Load Time:		0.00096035 seconds
+	Total Linear Solution Time:		0.00442839 seconds
 
 
-***** Total Simulation Solvers Run Time: 2.0555 seconds
-***** Total Elapsed Run Time:            2.17185 seconds
+***** Total Simulation Solvers Run Time: 2.30664 seconds
+***** Total Elapsed Run Time:            2.4132 seconds
 *****
 ***** End of Xyce(TM) Simulation
 *****
@@ -4065,20 +4077,20 @@ R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)R level 1 (Resistor)
 Timing summary of 1 processor
                  Stats                   Count       CPU Time              Wall Time
 ---------------------------------------- ----- --------------------- ---------------------
-Xyce                                         1        2.083 (100.0%)        2.172 (100.0%)
-  Analysis                                   1        1.971 (94.60%)        2.055 (94.63%)
-    AC                                       1        1.971 (94.60%)        2.055 (94.62%)
-      Residual                              74        0.010 ( 0.46%)        0.010 ( 0.44%)
-      Jacobian                              73        0.009 ( 0.43%)        0.009 ( 0.41%)
-      Linear Solve                          73        0.033 ( 1.60%)        0.033 ( 1.54%)
-      Nonlinear Solve                     1101        1.498 (71.92%)        1.562 (71.93%)
-        Linear Solve                      1101        1.494 (71.73%)        1.560 (71.80%)
-  Netlist Import                             1        0.098 ( 4.70%)        0.102 ( 4.69%)
-    Parse Context                            1        0.010 ( 0.47%)        0.010 ( 0.45%)
-    Distribute Devices                       1        0.070 ( 3.38%)        0.074 ( 3.43%)
+Xyce                                         1        2.345 (100.0%)        2.413 (100.0%)
+  Analysis                                   1        2.238 (95.45%)        2.307 (95.58%)
+    AC                                       1        2.238 (95.44%)        2.304 (95.45%)
+      Residual                               8        0.001 ( 0.05%)        0.001 ( 0.05%)
+      Jacobian                               7        0.001 ( 0.04%)        0.001 ( 0.04%)
+      Linear Solve                           7        0.004 ( 0.19%)        0.004 ( 0.18%)
+      Nonlinear Solve                     1101        1.700 (72.51%)        1.751 (72.55%)
+        Linear Solve                      1101        1.695 (72.29%)        1.748 (72.42%)
+  Netlist Import                             1        0.093 ( 3.95%)        0.093 ( 3.84%)
+    Parse Context                            1        0.009 ( 0.37%)        0.009 ( 0.36%)
+    Distribute Devices                       1        0.068 ( 2.91%)        0.068 ( 2.82%)
     Verify Devices                           1        0.000 (<0.01%)        0.000 (<0.01%)
-    Instantiate                              1        0.016 ( 0.78%)        0.016 ( 0.75%)
-  Late Initialization                        1        0.013 ( 0.63%)        0.013 ( 0.60%)
-    Global Indices                           1        0.007 ( 0.32%)        0.007 ( 0.31%)
-  Setup Matrix Structure                     1        0.004 ( 0.18%)        0.004 ( 0.17%)
+    Instantiate                              1        0.014 ( 0.62%)        0.014 ( 0.60%)
+  Late Initialization                        1        0.013 ( 0.55%)        0.013 ( 0.53%)
+    Global Indices                           1        0.006 ( 0.27%)        0.006 ( 0.26%)
+  Setup Matrix Structure                     1        0.005 ( 0.19%)        0.005 ( 0.19%)
 
