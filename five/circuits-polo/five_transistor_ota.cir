@@ -131,7 +131,7 @@
 *.OPTION INGOLD=2 ARTIST=2 PSF=2 MEASOUT=1 PARHIER=LOCAL PROBE=0 MARCH=2 ACCURACY=1 POST
 
 .SUBCKT NMOS d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*400n}
+.param width={nfin*200n}
 .param length={50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
@@ -140,8 +140,8 @@ mn d g s b N_50n L={length} W={width} PD={perimeter} AD={area}
 .ENDS
 
 .SUBCKT PMOS d g s b PARAMS: w=270e-9 l=20e-9 nfin=10
-.param width={nfin*400n}
-.param length={2*50n}
+.param width={nfin*200n}
+.param length={50n}
 .param perimeter={3*length}
 .param area={1.5*length*width}
 
@@ -2111,28 +2111,39 @@ x_m0_m3_M2_X1_Y0_0 net_m0_m3_M2_X1_Y0_D net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_
 x_m0_m3_M2_X1_Y0_1 net_m0_m3_M2_X1_Y0_diff net_m0_m3_M2_X1_Y0_G net_m0_m3_M2_X1_Y0_S gnd! NMOS w=2.7e-07 l=2e-08 nfin=12
 
 **connections
-r_vdd_inject vdd! vdd_M4_3040_336 0.001
-r_id_inject id id_M3_640_252 0.001
-r_vinp_inject vinp vinp_M5_1440_0 0.001
-r_vinn_inject vinn vinn_M2_2400_504 0.001
-r_vout_probe vout_M4_2440_252 vout 0.001
-r_vss_inject 0 vss_M3_560_132 0.001
+v_vdd_inject vdd! vdd_M4_3040_336 0
+v_id_inject id id_M3_640_252 0
+v_vinp_inject vinp vinp_M5_1440_0 0
+v_vinn_inject vinn vinn_M2_2400_504 0
+v_vout_probe vout_M4_2440_252 vout 0
+v_vss_inject 0 vss_M3_560_132 0
+v_net10_probe net10 net10_M4_960_168 0
+v_net8_probe net8 net8_M4_3680_420 0
 
 **testbench
-v2 vinp 0 DC 675e-3 AC 500e-3 180
-v1 vinn_M2_2400_504 0 DC 675e-3 AC 500e-3
-v0 vdd! 0 1000e-3
+v2 vinp 0 DC 675e-3 AC 0.5 180 SIN(675e-3 .002 1k 0 0 180)
+v1 vinn 0 DC 675e-3 AC 0.5     SIN(675e-3 .002 1k 0 0   0)
+v0 vdd! 0 1.0
 i5 vdd! id 40e-6
-
-
 cload vout 0 350e-15
 
-.OP
+*.OP
 
-*.PRINT DC v(vout) v(id) v(vinp) v(vinn)
+*.PRINT DC v(vout) v(id) v(vinp) v(vinn) id(x_m5_m4_M2_X1_Y0_0:mn) id(x_m5_m4_M2_X1_Y0_1:mn) id(x_m5_m4_M1_X0_Y0_0:mn) id(x_m5_m4_M1_X0_Y0_1:mn)
 
 .AC DEC 100 1.0 1e11
 
-.PRINT AC vdb(vout)
+.PRINT AC vdb(vout) vm(vout)
+
+*.tran 10n 5m
+*.PRINT TRAN v(vout) v(vinp) v(vinn) v(id) v(net10) v(net8) id(x_m5_m4_M2_X1_Y0_0:mn)
+*.OPTIONS OUTPUT INITIAL_INTERVAL=1u
+*.OPTIONS TIMEINT RELTOL=1e-4 ABSTOL=1e-8
+
+*.MEASURE TRAN vout_max MAX v(vout)
+*.MEASURE TRAN vout_min MIN v(vout)
+*.MEASURE TRAN vout_pp  PP  v(vout)
+
+.MEASURE AC EQN vdb(vout) 0
 
 .END
