@@ -28,10 +28,10 @@ RUN \
 
 FROM trillinos_build as xyce
 
-COPY Xyce-7.0 /opt/Xyce/Xyce-7.0
+COPY Xyce-7.1 /opt/Xyce/Xyce-7.1
 
 RUN \
-    cd /opt/Xyce/Xyce-7.0 && \
+    cd /opt/Xyce/Xyce-7.1 && \
     ./bootstrap && \
     mkdir build && \
     cd build && \
