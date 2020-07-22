@@ -35,7 +35,7 @@ docker run --mount source=regVol,target=/opt/Xyce/Test ubuntu bash -c 'cd /opt/X
 
 # Build a small image by extracting executable and shared libraries from original build
 
-The `stevenmburns/xyce` image is 2.65GB. We can reduce its size to 137MB by copying the minimum that is needed out of the larger image.
+The `stevenmburns/xyce` image is 2.12GB. We can reduce its size to 127MB by copying the minimum that is needed out of the larger image.
 Here is one way to do this:
 ```bash
 docker build -f Dockerfile.small.ubuntu -t stevenmburns/xyce_small_ubuntu .
